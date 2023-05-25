@@ -5,8 +5,11 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.example.projeto2.ui.theme.Projeto2Theme
 import data.Product
 
 @Composable
@@ -40,7 +43,7 @@ fun NewProduct(productsViewModel: ProductsViewModel, navController: NavHostContr
                             value = nome.value,
                             onValueChange = { nome.value = it },
                             label = { Text("Nome") },
-                            modifier = Modifier.fillMaxWidth()
+                            modifier = Modifier.widthIn(max = 250.dp)
                         )
                     }
 
@@ -49,7 +52,7 @@ fun NewProduct(productsViewModel: ProductsViewModel, navController: NavHostContr
                             value = preco.value,
                             onValueChange = { preco.value = it },
                             label = { Text("Preço") },
-                            modifier = Modifier.fillMaxWidth()
+                            modifier = Modifier.widthIn(max = 250.dp)
                         )
                     }
 
@@ -69,7 +72,7 @@ fun NewProduct(productsViewModel: ProductsViewModel, navController: NavHostContr
                                     navController.popBackStack()
                                 }
                             },
-                            modifier = Modifier.fillMaxWidth()
+                            modifier = Modifier.widthIn(max = 185.dp)
                         ) {
                             Text("Adicionar Produto")
                         }
@@ -90,8 +93,13 @@ fun generateNewProductId(): Int {
 
 /*@Preview
 @Composable
-fun PreviewNewProductScreen() {
-    NewProduct()
+fun NewProductPreview() {
+    val productsViewModel = ProductsViewModel()
+    val navController = rememberNavController()
+
+    Projeto2Theme {
+        NewProduct(productsViewModel = productsViewModel, navController = navController)
+    }
 }*/
 
 

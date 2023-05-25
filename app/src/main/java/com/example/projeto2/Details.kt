@@ -54,7 +54,7 @@ fun Details(product: Product, onProductDeleted: () -> Unit) {
                     Spacer(modifier = Modifier.height(16.dp))
                     Button(
                         onClick = onProductDeleted,
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.widthIn(max = 185.dp)
                     ) {
                         Text("Excluir Produto")
                     }
@@ -64,7 +64,7 @@ fun Details(product: Product, onProductDeleted: () -> Unit) {
     )
 }
 
-@Preview
+/*@Preview
 @Composable
 fun DetailsPreview() {
     val product = Product(
@@ -77,4 +77,4 @@ fun DetailsPreview() {
     Projeto2Theme {
         Details(product, {})
     }
-}
+}*/
