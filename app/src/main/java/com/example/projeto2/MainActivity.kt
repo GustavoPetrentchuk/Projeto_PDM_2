@@ -52,8 +52,9 @@ fun AppNavigation(navController: NavHostController, productsViewModel: ProductsV
             Home(productsViewModel, navController)
         }
         composable(Destination.Details.route) { navBackStackEntry ->
-            val elementId = navBackStackEntry.arguments?.getInt("elementId")
-            val product = productsViewModel.products.find { it.id == elementId }
+            val elementId = navBackStackEntry.arguments?.getString("elementId")
+            val elementId2 = elementId?.toInt() /*Cast da string para int*/
+            val product = productsViewModel.products.find { it.id == elementId2 }
             if (product != null) {
                 Details(product) {
                     productsViewModel.removeProduct(product)

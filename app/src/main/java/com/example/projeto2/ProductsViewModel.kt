@@ -10,6 +10,12 @@ class ProductsViewModel : ViewModel() {
     private val productList = mutableStateListOf<Product>()
     val products: List<Product> get() = productList.sortedByDescending { it.isFavorite }
 
+    private var currentProductId = productList.maxByOrNull { it.id }?.id ?: 0 // Recebe o ultimo ID da lista
+    fun generateNewProductId(): Int {
+        currentProductId++
+        return currentProductId
+    }
+
     init {
         productList.addAll(ProductsRepo.getProducts())
     }

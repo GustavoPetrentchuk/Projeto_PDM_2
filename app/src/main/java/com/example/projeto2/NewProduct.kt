@@ -5,11 +5,8 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import com.example.projeto2.ui.theme.Projeto2Theme
 import data.Product
 
 @Composable
@@ -63,7 +60,7 @@ fun NewProduct(productsViewModel: ProductsViewModel, navController: NavHostContr
                                 val precoProduto = preco.value
                                 if (nomeProduto.isNotBlank() && precoProduto.isNotBlank()) {
                                     val novoProduto = Product(
-                                        id = generateNewProductId(),
+                                        id = productsViewModel.generateNewProductId(),
                                         name = nomeProduto,
                                         price = precoProduto,
                                         productImage = R.drawable.new_product
@@ -81,13 +78,6 @@ fun NewProduct(productsViewModel: ProductsViewModel, navController: NavHostContr
             }
         }
     )
-}
-
-private var currentProductId = 0
-
-fun generateNewProductId(): Int {
-    currentProductId++
-    return currentProductId
 }
 
 
